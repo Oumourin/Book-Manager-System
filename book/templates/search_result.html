@@ -1,0 +1,171 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+			<h1 class="text-center">
+				搜索结果
+			</h1>
+		</div>
+	</div>
+	<h2 class="text-center">
+		搜索条件{{msg}}
+			</h2>
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>
+							ISBN号
+						</th>
+						<th>
+							书名
+						</th>
+						<th>
+							库存数量
+						</th>
+						<th>
+							操作
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					<!--<tr>-->
+						<!--<td>-->
+							<!--1-->
+						<!--</td>-->
+						<!--<td>-->
+							<!--TB - Monthly-->
+						<!--</td>-->
+						<!--<td>-->
+							<!--01/04/2012-->
+						<!--</td>-->
+						<!--<td>-->
+							<!--Default-->
+						<!--</td>-->
+					<!--</tr>-->
+					<!--<tr class="success">-->
+						<!--<td>-->
+							<!--1-->
+						<!--</td>-->
+						<!--<td>-->
+							<!--TB - Monthly-->
+						<!--</td>-->
+						<!--<td>-->
+							<!--01/04/2012-->
+						<!--</td>-->
+						<!--<td>-->
+							<!--Approved-->
+						<!--</td>-->
+					<!--</tr>-->
+					<!--<tr class="error">-->
+						<!--<td>-->
+							<!--2-->
+						<!--</td>-->
+						<!--<td>-->
+							<!--TB - Monthly-->
+						<!--</td>-->
+						<!--<td>-->
+							<!--02/04/2012-->
+						<!--</td>-->
+						<!--<td>-->
+							<!--Declined-->
+						<!--</td>-->
+					<!--</tr>-->
+					<!--<tr class="warning">-->
+						<!--<td>-->
+							<!--3-->
+						<!--</td>-->
+						<!--<td>-->
+							<!--TB - Monthly-->
+						<!--</td>-->
+						<!--<td>-->
+							<!--03/04/2012-->
+						<!--</td>-->
+						<!--<td>-->
+							<!--Pending-->
+						<!--</td>-->
+					<!--</tr>-->
+					<!--<tr class="info">-->
+						<!--<td>-->
+							<!--4-->
+						<!--</td>-->
+						<!--<td>-->
+							<!--TB - Monthly-->
+						<!--</td>-->
+						<!--<td>-->
+							<!--04/04/2012-->
+						<!--</td>-->
+						<!--<td>-->
+							<!--Call in to confirm-->
+						<!--</td>-->
+					<!--</tr>-->
+                    {% if order_items_isbn %}
+							{% for item in order_items_isbn %}
+            				<tr>
+                				<td>{{ item.isbn }}</td>
+                				<td>{{ item.name }}</td>
+                				<td>{{ item.bookStock.amount  }}</td>
+                				<td><form class="form-horizontal" role="form" action="{{ url_for("return_index") }}" method="post">
+									<div class="form-group">
+                    			<!--<input type="hidden" name="item_id" value="{{ item.id }}">-->
+									<!--<input type="hidden" name="order_id" value="{{ order_id }}">-->
+                    			<!--<input type="hidden" name="amount" value="{{ item.amount }}">-->
+									<!--<input type="hidden" name="isbn" value="{{ item.isbn }}">-->
+                    			<input type="submit" value="管理">
+										</div>
+									</form></td>
+            				</tr>
+            				{% endfor %}
+
+        					{% endif %}
+
+						{% if order_items_name %}
+							{% for item in order_items_name %}
+            					<tr>
+                					<td>{{ item.isbn }}</td>
+                					<td>{{ item.name }}</td>
+                					<td>{{ item.bookStock.amount  }}</td>
+                					<td><form class="form-horizontal" role="form" action="{{ url_for("return_index") }}" method="post">
+										<div class="form-group">
+                    				<!--<input type="hidden" name="item_id" value="{{ item.id }}">-->
+											<!--<input type="hidden" name="order_id" value="{{ order_id }}">-->
+                    				<!--<input type="hidden" name="amount" value="{{ item.amount }}">-->
+									<!--<input type="hidden" name="isbn" value="{{ item.isbn }}">-->
+                    				<input type="submit" value="管理">
+										</div>
+									</form></td>
+            				</tr>
+            				{% endfor %}
+						{% else %}
+            				<tr>
+                				<td colspan="4">（暂无项目）</td>
+							</tr>
+						{% endif %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+
+			<div>
+			<br>
+				<br>
+				<br>
+				<br>
+			</div>
+			<div>
+				<form class="form-horizontal" role="form" action="{{ url_for("return_index") }}" method="post">
+				<div class="form-group">
+        			<div class="container">
+						<div class="row clearfix">
+						<div class="col-md-12 column">
+							 <button type="submit" class="btn btn-default btn-primary">返回主页</button>
+						</div>
+					</div>
+				</div>
+					</div>
+					</form>
+			</div>
+{% endblock %}

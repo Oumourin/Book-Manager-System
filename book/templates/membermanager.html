@@ -1,0 +1,89 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--<meta charset="UTF-8">-->
+<!--<title>会员管理</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div>-->
+<!--<h1>会员管理</h1>-->
+<!--</div>-->
+<!--<div>-->
+<!--<table>-->
+<!--<tr>-->
+<!--<th>操作方法</th>-->
+<!--<th>会员ID</th>-->
+<!--</tr>-->
+<!--</table>-->
+<!--</div>-->
+
+<!--<div>-->
+<!--<form action="{{ url_for('member_manager') }}" method="post">-->
+<!--<div>-->
+<!--<select name="way">-->
+<!--<option value="modify">修改</option>-->
+<!--<option value="add">添加</option>-->
+<!--</select>-->
+<!--<input type="number" name="member" placeholder="会员ID">-->
+<!--</div>-->
+<!--<div>-->
+<!--<input type="submit" value="确定">-->
+<!--</div>-->
+<!--</form>-->
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <h3 class="text-center">
+                会员系统管理
+            </h3>
+        </div>
+    </div>
+    {% for msg in get_flashed_messages() %}
+    <div class="alert alert-success alert-dismissible">
+        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×
+        </button>
+        {{ msg }}
+    </div>
+    {% endfor %}
+    {% if msg %}
+    <div class="container">
+        <div class="row clearfix">
+            <div class="col-md-12 column">
+                <div class="alert alert-success alert-dismissable">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                    <h4>
+                        注意!
+                    </h4> <strong>警告！</strong> {{msg}}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    <div class="row clearfix">
+        <div class="col-md-12 column">
+            <ul class="nav nav-tabs">
+                <li class="active">
+                    <a href="{{url_for("add_member_page")}}">添加会员</a>
+                </li>
+                <li>
+                    <a href="{{url_for("delete_member_page")}}">删除会员</a>
+                </li>
+                <li>
+                    <a href="{{url_for('member_modify_page')}}">修改信息</a>
+                </li>
+            </ul>
+            </li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% block body %}
+
+{% endblock %}
+
+{% endblock %}

@@ -1,0 +1,306 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="zh-cms_Hans">-->
+<!--<head>-->
+    <!--<meta charset="UTF-8">-->
+    <!--<meta name="viewport"-->
+          <!--content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">-->
+    <!--<meta http-equiv="X-UA-Compatible" content="ie=edge">-->
+    <!--<title>出货单</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div>-->
+    <!--{%- if msg %}-->
+        <!--{{ msg }}-->
+    <!--{%  endif -%}-->
+<!--</div>-->
+
+
+<!--<div>-->
+    <!--<h2>订单信息</h2>-->
+    <!--<table>-->
+        <!--<tr>-->
+            <!--<th>操作员ID</th>-->
+            <!--<th>订单ID</th>-->
+        <!--</tr>-->
+        <!--<tr>-->
+            <!--<td>{{ operator_id }}</td>-->
+            <!--<td>{{ order_id}}</td>-->
+        <!--</tr>-->
+    <!--</table>-->
+<!--</div>-->
+
+
+<!--<div>-->
+    <!--<form></form>-->
+<!--</div>-->
+
+<!--<div>-->
+    <!--<h2>订单详情</h2>-->
+    <!--<table>-->
+        <!--<tr>-->
+            <!--<th>ISBN</th>-->
+            <!--<th>书名</th>-->
+            <!--<th>数量</th>-->
+            <!--<th>操作</th>-->
+        <!--</tr>-->
+
+        <!--{% if order_items %}-->
+            <!--{% for item in order_items %}-->
+            <!--<tr>-->
+                <!--<td>{{ item.isbn }}</td>-->
+                <!--<td>{{ item.book.name }}</td>-->
+                <!--<td>{{ item.amount }}</td>-->
+                <!--<td>-->
+                    <!--<form action="{{ url_for("sell_order_item_remove") }}" method="post">-->
+                    <!--<input type="hidden" name="item_id" value="{{ item.id }}">-->
+                    <!--<input type="hidden" name="order_id" value="{{ order_id }}">-->
+                    <!--<input type="hidden" name="amount" value="{{ item.amount }}">-->
+                    <!--<input type="hidden" name="isbn" value="{{ item.isbn }}">-->
+                    <!--<input type="submit" value="移除">-->
+                    <!--</form>-->
+                <!--</td>-->
+            <!--</tr>-->
+            <!--{% endfor %}-->
+        <!--{% endif %}-->
+    <!--</table>-->
+
+    <!--<form action="{{ url_for("sell_order_item_add") }}" method="post">-->
+    <!--<h2>新增订单条目</h2>-->
+    <!--<input type="hidden" name="order_id" value="{{ order_id }}">-->
+    <!--<input type="text" name="isbn" placeholder="ISBN" required="required">-->
+    <!--<input type="number" name="amount" placeholder="订购数量" required="required">-->
+    <!--<input type="submit" value="增加">-->
+    <!--</form>-->
+
+    <!--<form action="{{ url_for("sell_order_item_submit") }}" method="post">-->
+        <!--<input type="hidden" name="order_id" value="{{ order_id }}">-->
+        <!--<input type="submit" value="确认并提交">-->
+    <!--</form>-->
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+			<h2 class="text-center">
+				 订单信息
+			</h2>
+			{% if msg %}
+			<div class="alert alert-success alert-dismissable">
+				 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+				<h4>
+					注意!
+				</h4> <strong>警告</strong> {{msg}}
+			</div>
+			{% endif %}
+			<div class="row clearfix">
+				<div class="col-md-6 column">
+					<h2 class="text-center">
+						 操作员ID
+					</h2>
+				</div>
+				<div class="col-md-6 column">
+					<h2 class="text-center">
+						 订单ID
+					</h2>
+				</div>
+			</div>
+			<div class="row clearfix">
+				<div class="col-md-6 column">
+					<h3 class="text-center">
+						 {{ operator_id }}
+					</h3>
+				</div>
+				<div class="col-md-6 column">
+					<h3 class="text-center">
+						{{ order_id }}
+					</h3>
+				</div>
+			</div>
+			<div class="row clearfix">
+				<div class="col-md-12 column">
+					<h2 class="text-center">
+						订单详情
+					</h2>
+				</div>
+			</div>
+			<div class="row clearfix">
+				<div class="col-md-12 column">
+					<table class="table table-hover table-striped">
+						<thead>
+							<tr>
+								<th>
+									ISBN
+								</th>
+								<th>
+									书名
+								</th>
+								<th>
+									数量
+								</th>
+								<th>
+									操作
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							<!--<tr>-->
+								<!--<td>-->
+									<!--1-->
+								<!--</td>-->
+								<!--<td>-->
+									<!--TB - Monthly-->
+								<!--</td>-->
+								<!--<td>-->
+									<!--01/04/2012-->
+								<!--</td>-->
+								<!--<td>-->
+									<!--Default-->
+								<!--</td>-->
+							<!--</tr>-->
+							<!--<tr class="success">-->
+								<!--<td>-->
+									<!--1-->
+								<!--</td>-->
+								<!--<td>-->
+									<!--TB - Monthly-->
+								<!--</td>-->
+								<!--<td>-->
+									<!--01/04/2012-->
+								<!--</td>-->
+								<!--<td>-->
+									<!--Approved-->
+								<!--</td>-->
+							<!--</tr>-->
+							<!--<tr class="error">-->
+								<!--<td>-->
+									<!--2-->
+								<!--</td>-->
+								<!--<td>-->
+									<!--TB - Monthly-->
+								<!--</td>-->
+								<!--<td>-->
+									<!--02/04/2012-->
+								<!--</td>-->
+								<!--<td>-->
+									<!--Declined-->
+								<!--</td>-->
+							<!--</tr>-->
+							<!--<tr class="warning">-->
+								<!--<td>-->
+									<!--3-->
+								<!--</td>-->
+								<!--<td>-->
+									<!--TB - Monthly-->
+								<!--</td>-->
+								<!--<td>-->
+									<!--03/04/2012-->
+								<!--</td>-->
+								<!--<td>-->
+									<!--Pending-->
+								<!--</td>-->
+							<!--</tr>-->
+							<!--<tr class="info">-->
+								<!--<td>-->
+									<!--4-->
+								<!--</td>-->
+								<!--<td>-->
+									<!--TB - Monthly-->
+								<!--</td>-->
+								<!--<td>-->
+									<!--04/04/2012-->
+								<!--</td>-->
+								<!--<td>-->
+									<!--Call in to confirm-->
+								<!--</td>-->
+							<!--</tr>-->
+							{% if order_items %}
+							{% for item in order_items %}
+            				<tr>
+                				<td>{{ item.isbn }}</td>
+                				<td>{{ item.book.name }}</td>
+                				<td>{{ item.amount  }}</td>
+                				<td><form class="form-horizontal" role="form" action="{{ url_for("sell_order_item_remove") }}" method="post">
+									<div class="form-group">
+                    			<input type="hidden" name="item_id" value="{{ item.id }}">
+									<input type="hidden" name="order_id" value="{{ order_id }}">
+                    			<input type="hidden" name="amount" value="{{ item.amount }}">
+									<input type="hidden" name="isbn" value="{{ item.isbn }}">
+                    			<input type="submit" value="移除">
+										</div>
+									</form></td>
+            				</tr>
+            				{% endfor %}
+        					{% else %}
+            				<tr>
+                				<td colspan="4">（暂无项目）</td>
+							</tr>
+        					{% endif %}
+						</tbody>
+					</table>
+				</div>
+			</div>
+
+			<h2 class="text-center">
+						新增订单条目
+			</h2>
+		<div class="container">
+			<div class="row clearfix">
+		<div class="col-md-12 column">
+			<form class="form-horizontal" role="form" action="{{ url_for("sell_order_item_add") }}" method='post'>
+				<input type="hidden" name="order_id" value="{{ order_id }}">
+				<div class="form-group">
+					 <label for="inputEmail3" class="col-sm-2 control-label">ISBN号</label>
+					<div class="col-sm-10">
+						<input name="isbn" type="text" class="form-control" placeholder="ISBN" id="inputEmail3" required="required"/>
+					</div>
+				</div>
+				<div class="form-group">
+					 <label for="inputPassword3" class="col-sm-2 control-label">订购数量</label>
+					<div class="col-sm-10">
+						<input name="amount" type="number" placeholder="订购数量" class="form-control" id="inputPassword3" required="required"/>
+					</div>
+				</div>
+			<div class="container">
+					<div class="row clearfix">
+						<div class="col-md-12 column">
+			 				<button type="submit" class="btn btn-default btn-primary">增加</button>
+						</div>
+				</div>
+</div>
+			</form>
+		</div>
+	</div>
+</div>
+			<div>
+			<br>
+				<br>
+				<br>
+				<br>
+			</div>
+			<div>
+				<form class="form-horizontal" role="form" action="{{ url_for("sell_order_item_submit") }}" method='post'>
+				<div class="form-group">
+					<input type="hidden" name="order_id" value="{{ order_id }}">
+					<div class="form-group">
+					 <label for="inputPassword3" class="col-sm-2 control-label">会员ID（可留空）</label>
+					<div class="col-sm-10">
+						<input name="member_id" type="number" placeholder="会员ID" class="form-control" id="inputPassword3"/>
+					</div>
+				</div>
+        			<div class="container">
+						<div class="row clearfix">
+						<div class="col-md-12 column">
+							 <button type="submit" class="btn btn-default btn-primary">确认并提交</button>
+						</div>
+					</div>
+				</div>
+					</div>
+					</form>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

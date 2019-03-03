@@ -1,0 +1,90 @@
+<!--<!doctype html>-->
+<!--<html lang="zh-cmn-Hans" xmlns="http://www.w3.org/1999/html">-->
+<!--<head>-->
+    <!--<meta charset="UTF-8">-->
+    <!--<meta name="viewport"-->
+          <!--content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">-->
+    <!--<meta http-equiv="X-UA-Compatible" content="ie=edge">-->
+    <!--<title>书店管理系统菜单</title>-->
+<!--</head>-->
+<!--<body>-->
+    <!--<div><a href="{{ url_for("page_auth_out") }}">登出</a></div>-->
+    <!--<ul>-->
+        <!--<li><a href="{{ url_for("sell_page") }}" >图书销售</a></li>-->
+        <!--<li><a href="{{ url_for("search_page") }}" >库存查询</a></li>-->
+        <!--<li><a href="{{ url_for("purchase_page") }}"> 图书进货</a></li>-->
+        <!--<li><a href="{{ url_for("report_page") }}">报表查看</a></li>-->
+    <!--</ul>-->
+<!--</body>-->
+<!--</html>-->
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+			<div class="carousel slide" id="carousel-784006">
+				<ol class="carousel-indicators">
+					<li class="active" data-slide-to="0" data-target="#carousel-784006">
+					</li>
+					<li data-slide-to="1" data-target="#carousel-784006">
+					</li>
+					<li data-slide-to="2" data-target="#carousel-784006">
+					</li>
+				</ol>
+				<div class="carousel-inner">
+					<div class="item active">
+						<img alt="" src="{{ url_for('static', filename='image/001.jpg') }}">
+						<div class="carousel-caption">
+							<h4>
+								First Thumbnail label
+							</h4>
+							<p>
+								Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+							</p>
+						</div>
+					</div>
+					<div class="item">
+						<img alt="" src="{{ url_for('static', filename='image/002.jpg') }}" >
+						<div class="carousel-caption">
+							<h4>
+								Second Thumbnail label
+							</h4>
+							<p>
+								Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+							</p>
+						</div>
+					</div>
+					<div class="item">
+						<img src="{{ url_for('static', filename='image/touma.jpg') }}"> >
+						<div class="carousel-caption">
+							<h4>
+								Third Thumbnail label
+							</h4>
+							<p>
+								Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
+							</p>
+						</div>
+					</div>
+				</div> <a class="left carousel-control" href="#carousel-784006" data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a> <a class="right carousel-control" href="#carousel-784006" data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+			</div>
+		</div>
+	</div>
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+			<div class="jumbotron well">
+				<h1>
+					布克图书管理系统
+				</h1>
+				<p>
+					本系统后端基于业界领先的Flask微架构打造，数据库系统采用广泛使用的MySQL数据库系统，确保客户数据安全性，前端采用Twitter同架构的Bootstrap打造，给用户以完美的图书进销存管理系统体验
+				</p>
+				<p>
+					 <a class="btn btn-primary btn-large" href="#">Learn more</a>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+			<div>
+			</div>
+{% endblock %}}

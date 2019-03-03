@@ -1,0 +1,162 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+    <!--<meta charset="UTF-8">-->
+    <!--<title>新增书目</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div>-->
+    <!--<h1>添加书目</h1>-->
+    <!--<table>-->
+        <!--<tr>-->
+            <!--<th>书名</th>-->
+            <!--<th>ISBN号</th>-->
+            <!--<th>售价</th>-->
+            <!--<th>作者</th>-->
+            <!--<th>出版社</th>-->
+            <!--<th>进价</th>-->
+            <!--<th>供应商</th>-->
+        <!--</tr>-->
+    <!--</table>-->
+<!--</div>-->
+
+<!--<div>-->
+    <!--<form action="{{ url_for("add_book_page") }}" method='post'>-->
+    <!--<input type="text" name="name" placeholder="书名" required="required">-->
+    <!--<input type="text" name="isbn" placeholder="ISBN" required="required">-->
+    <!--<input type="number" name="price" placeholder="价格" required="required">-->
+    <!--<input type="text" name="author" placeholder="作者" required="required">-->
+    <!--<input type="text" name="press" placeholder="出版社" required="required">-->
+    <!--<input type="number" name="purchase_price" placeholder="进价" required="required">-->
+    <!--<input type="number" name="id" placeholder="供应商ID" required="required">-->
+    <!--<input type="submit" value="增加">-->
+    <!--</form>-->
+<!--</div>-->
+
+<!--<div>-->
+    <!--<form action="{{ url_for("submit_add_page") }}" method="post">-->
+    <!--<input type="submit" value="提交">-->
+    <!--</form>-->
+<!--</div>-->
+<!--</body>-->
+<!--</html>-->
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+			<h2 class="text-center">
+				新增书目
+			</h2>
+            {% for msg in get_flashed_messages() %}
+                            <div class="alert alert-success alert-dismissible">
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×
+                                </button>
+                                {{ msg }}
+                            </div>
+			{% endfor %}
+            {% if msg %}
+			<div class="alert alert-success alert-dismissable">
+				 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+				<h4>
+					注意!
+				</h4> <strong>警告！</strong>  {{msg}}
+			</div>
+            {% endif %}
+		</div>
+	</div>
+    <div class="container">
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+			<h3 class="text-center">
+				添加书目
+			</h3>
+		</div>
+	</div>
+</div>
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+			<form class="form-horizontal" role="form" action="{{ url_for("add_book_page") }}" method='post'>
+				<div class="form-group">
+					 <label for="inputEmail3" class="col-sm-2 control-label">书名</label>
+					<div class="col-sm-10">
+						<input name="name" placeholder="书名" type="text" class="form-control" required="required"/>
+					</div>
+				</div>
+				<div class="form-group">
+					 <label for="inputPassword3" class="col-sm-2 control-label">ISBN</label>
+					<div class="col-sm-10">
+						<input type="text" name="isbn" placeholder="ISBN号" class="form-control" required="required" />
+					</div>
+				</div>
+                <div class="form-group">
+					 <label for="inputEmail3" class="col-sm-2 control-label">价格</label>
+					<div class="col-sm-10">
+						<input type="number" name="price" placeholder="价格" class="form-control"  required="required"/>
+					</div>
+                </div>
+                <div class="form-group">
+					 <label for="inputEmail3" class="col-sm-2 control-label">作者</label>
+					<div class="col-sm-10">
+						<input type="text" name="author" placeholder="作者" required="required" class="form-control"  />
+					</div>
+                </div>
+            <div class="form-group">
+					 <label for="inputEmail3" class="col-sm-2 control-label">出版社</label>
+					<div class="col-sm-10">
+						<input type="text" name="press" placeholder="出版社" required="required" class="form-control"  />
+					</div>
+                </div>
+            <div class="form-group">
+					 <label for="inputEmail3" class="col-sm-2 control-label">进价</label>
+					<div class="col-sm-10">
+						<input type="number" name="purchase_price" placeholder="进价" required="required" class="form-control"  />
+					</div>
+                </div>
+                <!--<div class="form-group">-->
+					 <!--<label for="inputEmail3" class="col-sm-2 control-label">供应商ID</label>-->
+					<!--<div class="col-sm-10">-->
+						<!--<input type="number" name="id" placeholder="供应商ID" required="required" class="form-control"  />-->
+					<!--</div>-->
+                <!--</div>-->
+            <!--<div class="form-group">-->
+					 <!--<label for="inputEmail3" class="col-sm-2 control-label">库存仓库ID</label>-->
+					<!--<div class="col-sm-10">-->
+						<!--<input type="text" name="warehouse" placeholder="库存仓库ID" required="required" class="form-control"  />-->
+					<!--</div>-->
+                <!--</div>-->
+                          <!--<div class="form-group">-->
+					 <!--<label for="inputEmail3" class="col-sm-2 control-label">书籍数量(留空默认为0)</label>-->
+					<!--<div class="col-sm-10">-->
+						<!--<input type="number" name="amount" placeholder="书籍数量" class="form-control"  />-->
+					<!--</div>-->
+                <!--</div>-->
+				<div class="form-group">
+					<div class="col-sm-offset-2 col-sm-10">
+						 <button type="submit" class="btn btn-default">增加</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+			<div>
+			<br>
+				<br>
+				<br>
+				<br>
+			</div>
+			<div>
+				<form class="form-horizontal" role="form" action="{{ url_for("submit_add_page") }}" method='post'>
+				<div class="form-group">
+        			<div class="container">
+						<div class="row clearfix">
+						<div class="col-md-12 column">
+							 <button type="submit" class="btn btn-default btn-primary">返回首页</button>
+						</div>
+					</div>
+				</div>
+					</div>
+					</form>
+			</div>
+{% endblock %}

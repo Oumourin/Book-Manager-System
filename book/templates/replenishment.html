@@ -1,0 +1,48 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="zh-cn">-->
+<!--<head>-->
+    <!--<meta charset="UTF-8">-->
+    <!--<title>财务报表</title>-->
+<!--</head>-->
+<!--<body>-->
+    <!--<div>-->
+        <!--<h1>财务报表</h1>-->
+    <!--</div>-->
+    <!--<div>售出书本数：{{order_total}}</div>-->
+    <!--<div>补货书本数：{{purchase_total}}</div>-->
+    <!--<div>销售额总计：{{finance_total}}</div>-->
+<!--</body>-->
+<!--</html>-->
+{% extends 'base.html' %}
+{% block content %}
+    <div class="container">
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+			<h2 class="text-center">
+				财务报表
+			</h2>
+		</div>
+	</div>
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+			<ul>
+				<li>
+					售出书本数：{{order_total}}
+				</li>
+				<li>
+					购进书本数：{{purchase_total}}
+				</li>
+				<li>
+                    销售额总计：{{finance_total}}
+				</li>
+                <li>
+					成本总计：{{profit_total}}
+				</li>
+				<li>
+					利润总计：{{profit_total}}
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+{% endblock %}
